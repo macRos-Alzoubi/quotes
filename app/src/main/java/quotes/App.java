@@ -14,16 +14,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
 
 public class App {
 
     public static void main(String[] args) {
-        Path path = Paths.get("C:\\Users\\STUDENT\\java-401\\quotes\\app\\src\\main\\resources\\recentquotes.json");
+        //Mohammad's Path
+        //Relative path : "app/src/main/resources/recentquotes.json" " DOSE NOT WORK"
+//        Path path = Paths.get("app/src/main/resources/recentquotes.json");
+        // Tariq's Path
+        ///Relative path : "app/src/main/resources/recentquotes.json" " DOSE NOT WORK"
+        Path path = Paths.get("app/src/main/resources/recentquotes.json");
         List<Quotes> quotes = jsonParser(path);
-        System.out.println(quotes);
+        System.out.println(randomBook(quotes));
     }
 
-
+    public static Quotes randomBook(List<Quotes> quotes){
+        Random random = new Random();
+        int randomIndex = random.nextInt(quotes.size()+1);
+        return quotes.get(randomIndex);
+    }
 
     public static List<Quotes> jsonParser(Path path) {
         List<Quotes> quotes = null;
@@ -41,4 +51,6 @@ public class App {
         }
         return quotes;
     }
+
+
 }
