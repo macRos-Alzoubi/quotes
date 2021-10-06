@@ -37,7 +37,7 @@ public class App {
         System.out.println(REVIEW_TYPE);
         System.out.println(Quotes.class);
         try (
-                BufferedReader bufferedReader = Files.newBufferedReader(path);
+                BufferedReader bufferedReader = Files.newBufferedReader(path)
         ) {
 
             GsonBuilder gsonBuilder = new GsonBuilder();
