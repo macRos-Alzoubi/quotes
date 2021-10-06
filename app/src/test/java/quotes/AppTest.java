@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AppTest {
     @Test void GSONTest() {
         // Relative Path : "app/src/main/resources/recentquotes.json" --- "DOSE NOT WORK HER"
-        Path path = Paths.get("C:\\Users\\STUDENT\\java-401\\quotes\\app\\src\\test\\resources\\recentquotes.json");
+        Path path = Paths.get("app/src/main/resources/recentquotes.json");
         List<Quotes> quotes= App.jsonParser(path);
         assertEquals(quotes.size() ,App.jsonParser(path).size());
 
