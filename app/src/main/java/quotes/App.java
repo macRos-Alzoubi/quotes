@@ -27,7 +27,7 @@ public class App {
             connection.setReadTimeout(5000);
             int connectionCode = connection.getResponseCode();
             if (connectionCode == HttpURLConnection.HTTP_OK) {
-                System.out.println(APIQuotesGetter(connection));
+                System.out.println(APIQuotesGetter(connection, new File("app/src/main/resources/APIQuotes.json")));
                 connection.disconnect();
             } else if (connectionCode == HttpURLConnection.HTTP_INTERNAL_ERROR) {
                 System.out.println("Internal Server Error.");
@@ -44,9 +44,9 @@ public class App {
         }
     }
 
-    public static APIQuotes APIQuotesGetter(HttpURLConnection connection) {
+    public static APIQuotes APIQuotesGetter(HttpURLConnection connection,File file) {
         APIQuotes apiQuote = null;
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("app/src/main/resources/APIQuotes.json"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             InputStreamReader inputStreamReader = new InputStreamReader(connection.getInputStream());
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             Gson gson = new GsonBuilder().create();
