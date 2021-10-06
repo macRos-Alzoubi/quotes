@@ -19,11 +19,6 @@ import java.util.Random;
 public class App {
 
     public static void main(String[] args) {
-        //Mohammad's Path
-        //Relative path : "app/src/main/resources/recentquotes.json" " DOSE NOT WORK"
-//        Path path = Paths.get("app/src/main/resources/recentquotes.json");
-        // Tariq's Path
-        ///Relative path : "app/src/main/resources/recentquotes.json" " DOSE NOT WORK"
         Path path = Paths.get("app/src/main/resources/recentquotes.json");
         List<Quotes> quotes = jsonParser(path);
         System.out.println(randomBook(quotes));
@@ -39,6 +34,8 @@ public class App {
         List<Quotes> quotes = null;
         final Type REVIEW_TYPE = new TypeToken<List<Quotes>>() {
         }.getType();
+        System.out.println(REVIEW_TYPE);
+        System.out.println(Quotes.class);
         try (
                 BufferedReader bufferedReader = Files.newBufferedReader(path);
         ) {
@@ -51,6 +48,4 @@ public class App {
         }
         return quotes;
     }
-
-
 }
